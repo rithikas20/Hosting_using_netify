@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Developer Profile</title>
+    <!-- Importing a nice font and icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS: This handles the design and colors */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            /* Cool animated background */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card Effect */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 20px;
+        }
+
+        h1 { margin: 0; font-size: 24px; }
+        
+        .typing-text {
+            min-height: 25px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: #f1f1f1;
+        }
+
+        /* Styling the buttons */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .link-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Hover animations for buttons */
+        .link-btn:hover {
+            background: white;
+            color: #23a6d5;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Replace the src with your own photo URL if you want! -->
+        <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Felix" alt="Profile Picture" class="profile-pic">
+        
+        <h1>Your Name Here</h1>
+        <!-- JavaScript will type text into this empty div -->
+        <div class="typing-text" id="typewriter"></div>
+
+        <!-- Links to your profiles -->
+        <a href="https://github.com/rithikas20?tab=repositories" target="_blank" class="link-btn">
+            <i class="fa-brands fa-github"></i> GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/feed/" target="_blank" class="link-btn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+
+        <a href="https://leetcode.com/" target="_blank" class="link-btn">
+            <i class="fa-solid fa-code"></i> LeetCode
+        </a>
+    </div>
+
+    <!-- JavaScript for the typing effect -->
+    <script>
+        const texts = ["Software Developer", "Problem Solver", "Tech Enthusiast"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById('typewriter').textContent = letter;
+            
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait 2 seconds before typing the next word
+            } else {
+                setTimeout(type, 100); // Typing speed
+            }
+        }
+        type(); // Start the typing effect
+    </script>
+</body>
+</html>
